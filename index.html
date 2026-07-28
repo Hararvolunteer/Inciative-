@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Harar Digital Art Library — A premium online museum, fine art gallery, and digital heritage archive dedicated to the UNESCO World Heritage city of Harar, Ethiopia. Explore, collect, and preserve centuries of architecture, culture, and visual history.">
+    <meta name="keywords" content="Harar, digital art library, UNESCO, Ethiopia, fine art photography, museum, Jugol, heritage archive, Islamic architecture, Harari culture">
+    <meta property="og:title" content="Harar Digital Art Library — The Living Walled City">
+    <meta property="og:description" content="Preserving centuries of architecture, culture, faith, and visual history through digital art.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#0B0B0B">
+    <title>Harar Digital Art Library — The Living Walled City</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #0B0B0B;
+            --bg-secondary: #121212;
+            --bg-elevated: #1A1A1A;
+            --gold: #D4AF37;
+            --gold-light: #E8C84A;
+            --gold-dark: #B8962E;
+            --bronze: #A97142;
+            --bronze-light: #C4885A;
+            --sandstone: #C9A66B;
+            --sandstone-light: #D9BC8C;
+            --ivory: #F8F6F2;
+            --ivory-dim: #E8E4DC;
+            --text-primary: #F8F6F2;
+            --text-secondary: #B5B0A8;
+            --text-muted: #7A756E;
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --border-medium: rgba(255, 255, 255, 0.1);
+            --border-gold: rgba(212, 175, 55, 0.3);
+            --glass-bg: rgba(18, 18, 18, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --card-bg: rgba(26, 26, 26, 0.8);
+            --card-hover-bg: rgba(30, 30, 30, 0.9);
+            --amber-glow: rgba(212, 175, 55, 0.15);
+            --transition-smooth: 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+            --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            --font-display: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Inter', 'Manrope', system-ui, sans-serif;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            --nav-height: 72px;
+            --max-width: 1400px;
+        }
+
+        [data-theme="light"] {
+            --bg: #F8F6F2;
+            --bg-secondary: #EFECE6;
+            --bg-elevated: #E8E4DC;
+            --text-primary: #1A1A1A;
+            --text-secondary: #4A4540;
+            --text-muted: #7A756E;
+            --border-subtle: rgba(0, 0, 0, 0.06);
+            --border-medium: rgba(0, 0, 0, 0.1);
+            --glass-bg: rgba(248, 246, 242, 0.75);
+            --glass-border: rgba(0, 0, 0, 0.08);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --card-hover-bg: rgba(255, 255, 255, 0.85);
+            --amber-glow: rgba(212, 175, 55, 0.08);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--gold-dark) var(--bg);
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold-dark);
+            border-radius: 3px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.5s ease, color 0.5s ease;
+            min-height: 100vh;
+        }
+
+        /* ── Navigation ─────────────────────── */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--nav-height);
+            background: rgba(11, 11, 11, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+            transition: all var(--transition-smooth);
+            display: flex;
+            align-items: center;
+        }
+        [data-theme="light"] .nav {
+            background: rgba(248, 246, 242, 0.8);
+        }
+        .nav.scrolled {
+            background: rgba(11, 11, 11, 0.92);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+        [data-theme="light"] .nav.scrolled {
+            background: rgba(248, 246, 242, 0.92);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        .nav-inner {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            color: var(--gold);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: color var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav-logo:hover {
+            color: var(--gold-light);
+        }
+        .nav-logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .nav-links a {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            transition: all var(--transition-smooth);
+            white-space: nowrap;
+            position: relative;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+            background: var(--amber-glow);
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 20px;
+            height: 1.5px;
+            background: var(--gold);
+            border-radius: 1px;
+            transition: transform var(--transition-smooth);
+        }
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+        .nav-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid var(--border-medium);
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all var(--transition-smooth);
+            position: relative;
+        }
+        .nav-btn:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: var(--amber-glow);
+            box-shadow: 0 0 20px var(--amber-glow);
+        }
+        .cart-count {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: #0B0B0B;
+            font-size: 0.65rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+        .mobile-menu-btn {
+            display: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid var(--border-medium);
+            background: transparent;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 1.3rem;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-smooth);
+        }
+        .mobile-menu-btn:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* ── Hero ──────────────────────────── */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #0B0B0B;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.35) saturate(0.7);
+            animation: heroZoom 20s ease-in-out infinite alternate;
+        }
+        @keyframes heroZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.08); }
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: radial-gradient(ellipse at center, transparent 30%, rgba(11, 11, 11, 0.85) 100%),
+                        linear-gradient(to top, rgba(11, 11, 11, 0.7) 0%, transparent 50%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 40px 24px;
+            max-width: 800px;
+        }
+        .hero-eyebrow {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.2s;
+        }
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 7vw, 6.5rem);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            color: var(--ivory);
+            line-height: 1;
+            margin-bottom: 12px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.4s;
+            text-shadow: 0 2px 40px rgba(0, 0, 0, 0.6);
+        }
+        .hero-title span {
+            display: block;
+            font-size: 0.35em;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            color: var(--sandstone);
+            margin-top: 6px;
+        }
+        .hero-subtitle {
+            font-family: var(--font-body);
+            font-size: clamp(1rem, 1.6vw, 1.3rem);
+            font-weight: 300;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 36px;
+            line-height: 1.5;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.6s;
+        }
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.8s;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .btn {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 14px 32px;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all var(--transition-smooth);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+            border: none;
+        }
+        .btn-primary {
+            background: var(--gold);
+            color: #0B0B0B;
+            box-shadow: 0 4px 24px rgba(212, 175, 55, 0.3);
+        }
+        .btn-primary:hover {
+            background: var(--gold-light);
+            box-shadow: 0 8px 36px rgba(212, 175, 55, 0.5);
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--ivory);
+            border: 1.5px solid rgba(248, 246, 242, 0.4);
+        }
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: var(--amber-glow);
+            transform: translateY(-2px);
+        }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 1.2s;
+            cursor: pointer;
+        }
+        .scroll-indicator span {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.4; height: 30px; }
+            50% { opacity: 1; height: 50px; }
+        }
+
+        /* ── Section Shared ────────────────── */
+        .section {
+            padding: 100px 32px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-eyebrow {
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            color: var(--text-primary);
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        .section-desc {
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* ── Categories ────────────────────── */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .category-card {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            cursor: pointer;
+            group: true;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            transition: all var(--transition-smooth);
+        }
+        .category-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-gold);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--border-gold);
+        }
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .category-card:hover img {
+            transform: scale(1.08);
+        }
+        .category-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(11, 11, 11, 0.85) 20%, transparent 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 24px;
+            transition: all var(--transition-smooth);
+        }
+        .category-card:hover .category-card-overlay {
+            background: linear-gradient(to top, rgba(11, 11, 11, 0.9) 25%, transparent 55%);
+        }
+        .category-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            transition: transform var(--transition-smooth);
+        }
+        .category-card:hover .category-icon {
+            transform: scale(1.15);
+        }
+        .category-name {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--ivory);
+            letter-spacing: 0.03em;
+        }
+        .category-count {
+            font-size: 0.75rem;
+            color: var(--sandstone);
+            font-weight: 400;
+            margin-top: 4px;
+        }
+
+        /* ── Masonry Gallery ──────────────── */
+        .masonry-grid {
+            columns: 3;
+            column-gap: 20px;
+        }
+        @media (max-width: 1024px) { .masonry-grid { columns: 2; } }
+        @media (max-width: 600px) { .masonry-grid { columns: 1; } }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            transition: all var(--transition-smooth);
+            cursor: pointer;
+            position: relative;
+            group: true;
+        }
+        .masonry-item:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-gold);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+        }
+        .masonry-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+        .masonry-item:hover img {
+            transform: scale(1.04);
+        }
+        .masonry-item-info {
+            padding: 18px 20px;
+        }
+        .masonry-item-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: 0.02em;
+        }
+        .masonry-item-meta {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .masonry-item-price {
+            font-family: var(--font-display);
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-top: 8px;
+        }
+        .masonry-hover-actions {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: all var(--transition-smooth);
+            z-index: 3;
+        }
+        .masonry-item:hover .masonry-hover-actions {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .masonry-hover-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(11, 11, 11, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border-medium);
+            color: var(--ivory);
+            cursor: pointer;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-smooth);
+        }
+        .masonry-hover-btn:hover {
+            background: var(--gold);
+            color: #0B0B0B;
+            border-color: var(--gold);
+        }
+
+        /* ── Marketplace ──────────────────── */
+        .marketplace-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            transition: all var(--transition-smooth);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .product-card:hover {
+            border-color: var(--border-gold);
+            box-shadow: var(--glass-shadow), 0 0 30px var(--amber-glow);
+            transform: translateY(-4px);
+            background: var(--card-hover-bg);
+        }
+        .product-card img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: var(--radius-md);
+            margin-bottom: 16px;
+            transition: transform 0.5s ease;
+        }
+        .product-card:hover img {
+            transform: scale(1.03);
+        }
+        .product-name {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+        .product-price {
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 1.15rem;
+            margin-top: 4px;
+        }
+        .product-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 6px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        .product-rating { color: var(--gold); }
+        .product-stock { color: #6BBF6B; font-weight: 500; }
+
+        /* ── Museum Section ───────────────── */
+        .museum-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .museum-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 28px 24px;
+            text-align: center;
+            transition: all var(--transition-smooth);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .museum-card:hover {
+            border-color: var(--border-gold);
+            box-shadow: var(--glass-shadow), 0 0 30px var(--amber-glow);
+            transform: translateY(-4px);
+        }
+        .museum-card-icon {
+            font-size: 2.8rem;
+            margin-bottom: 16px;
+            transition: transform var(--transition-smooth);
+        }
+        .museum-card:hover .museum-card-icon {
+            transform: scale(1.2);
+        }
+        .museum-card-title {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.15rem;
+            color: var(--text-primary);
+            letter-spacing: 0.03em;
+        }
+        .museum-card-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        /* ── Storytelling ─────────────────── */
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        .story-card {
+            position: relative;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            aspect-ratio: 4/5;
+            cursor: pointer;
+            border: 1px solid var(--border-subtle);
+            transition: all var(--transition-smooth);
+        }
+        .story-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--border-gold);
+            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.6);
+        }
+        .story-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        .story-card:hover img {
+            transform: scale(1.06);
+        }
+        .story-card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 28px 24px;
+            background: linear-gradient(to top, rgba(11, 11, 11, 0.9) 30%, transparent);
+        }
+        .story-card-tag {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .story-card-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--ivory);
+            letter-spacing: 0.03em;
+            line-height: 1.3;
+        }
+
+        /* ── Stats ────────────────────────── */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 24px;
+            text-align: center;
+        }
+        .stat-item {
+            padding: 32px 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(12px);
+            transition: all var(--transition-smooth);
+        }
+        .stat-item:hover {
+            border-color: var(--border-gold);
+            box-shadow: 0 0 30px var(--amber-glow);
+        }
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 0.02em;
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 6px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* ── Membership ───────────────────── */
+        .membership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        .membership-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            padding: 36px 28px;
+            text-align: center;
+            transition: all var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+        .membership-card.featured {
+            border-color: var(--border-gold);
+            box-shadow: 0 0 40px var(--amber-glow);
+            transform: scale(1.03);
+        }
+        .membership-card:hover {
+            border-color: var(--border-gold);
+            box-shadow: var(--glass-shadow), 0 0 30px var(--amber-glow);
+            transform: translateY(-4px);
+        }
+        .membership-card.featured:hover {
+            transform: scale(1.03) translateY(-4px);
+        }
+        .membership-badge {
+            display: inline-block;
+            font-size: 0.6rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            background: var(--gold);
+            color: #0B0B0B;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .membership-tier {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: 0.04em;
+        }
+        .membership-price {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin: 12px 0;
+        }
+        .membership-benefits {
+            list-style: none;
+            text-align: left;
+            margin: 20px 0;
+            padding: 0;
+        }
+        .membership-benefits li {
+            padding: 8px 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .membership-benefits li::before {
+            content: '✦';
+            color: var(--gold);
+            font-size: 0.7rem;
+        }
+
+        /* ── Testimonials ─────────────────── */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .testimonial-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 28px 24px;
+            transition: all var(--transition-smooth);
+        }
+        .testimonial-card:hover {
+            border-color: var(--border-gold);
+            box-shadow: var(--glass-shadow);
+            transform: translateY(-2px);
+        }
+        .testimonial-quote {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--gold);
+            font-size: 0.9rem;
+        }
+        .testimonial-role {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* ── Newsletter ───────────────────── */
+        .newsletter-section {
+            background: var(--bg-elevated);
+            border-radius: var(--radius-xl);
+            padding: 60px 32px;
+            text-align: center;
+            border: 1px solid var(--border-subtle);
+            position: relative;
+            overflow: hidden;
+        }
+        .newsletter-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, var(--amber-glow) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            max-width: 500px;
+            margin: 24px auto 0;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+        .newsletter-input {
+            flex: 1;
+            min-width: 240px;
+            padding: 14px 20px;
+            border-radius: 50px;
+            border: 1.5px solid var(--border-medium);
+            background: var(--bg);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            outline: none;
+            transition: all var(--transition-smooth);
+        }
+        .newsletter-input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 4px var(--amber-glow);
+        }
+        .newsletter-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        /* ── Footer ───────────────────────── */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-subtle);
+            padding: 60px 32px 32px;
+            margin-top: 60px;
+        }
+        .footer-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 40px;
+        }
+        .footer-col h4 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: 0.04em;
+            margin-bottom: 16px;
+        }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color var(--transition-smooth);
+        }
+        .footer-col ul li a:hover { color: var(--gold); }
+        .footer-bottom {
+            max-width: var(--max-width);
+            margin: 40px auto 0;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        .footer-unesco {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--sandstone);
+            font-weight: 500;
+        }
+
+        /* ── Reveal Animations ────────────── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* ── Toast ────────────────────────── */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 2000;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-gold);
+            color: var(--text-primary);
+            padding: 16px 24px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            transform: translateY(120px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            pointer-events: none;
+        }
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        @media (max-width: 1024px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: var(--nav-height);
+                left: 0;
+                right: 0;
+                background: rgba(11, 11, 11, 0.96);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 20px;
+                gap: 2px;
+                border-bottom: 1px solid var(--border-subtle);
+                z-index: 999;
+            }
+            .nav-links.open { display: flex; }
+            [data-theme="light"] .nav-links { background: rgba(248, 246, 242, 0.96); }
+            .nav-links a { padding: 12px 16px; font-size: 0.9rem; width: 100%; text-align: center; }
+            .mobile-menu-btn { display: flex; }
+            .section { padding: 60px 20px; }
+            .hero { min-height: 600px; }
+        }
+        @media (max-width: 600px) {
+            .nav-inner { padding: 0 16px; }
+            .nav-logo { font-size: 1rem; }
+            .hero-title { font-size: 2.4rem; }
+            .btn { padding: 12px 24px; font-size: 0.75rem; }
+            .categories-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .stat-number { font-size: 2rem; }
+            .masonry-grid { columns: 1; }
+            .marketplace-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .stories-grid { grid-template-columns: 1fr; }
+            .membership-grid { grid-template-columns: 1fr; }
+            .footer-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ─── Navigation ──────────────────────── -->
+    <nav class="nav" id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo" aria-label="Harar Digital Art Library Home">
+                <span class="nav-logo-icon">🕌</span> Harar Digital Art Library
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#collections">Collections</a></li>
+                <li><a href="#fine-art">Fine Art</a></li>
+                <li><a href="#museum">Museum</a></li>
+                <li><a href="#stories">Stories</a></li>
+                <li><a href="#store">Store</a></li>
+                <li><a href="#membership">Membership</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="nav-btn" aria-label="Search" onclick="showToast('Search coming soon')">🔍</button>
+                <button class="nav-btn" aria-label="Cart" id="cartBtn" onclick="showToast('Cart: 3 items')">
+                    🛒<span class="cart-count">3</span>
+                </button>
+                <button class="nav-btn" id="themeToggle" aria-label="Toggle theme" onclick="toggleTheme()">🌙</button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu" onclick="toggleMobileMenu()">☰</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ─── Hero Section ───────────────────── -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <img src="images/hero-bg.jpg"
+                 alt="Historic Jugol Gate of Harar illuminated at night"
+                 loading="eager"
+                 onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(180deg, #1a1208 0%, #0B0B0B 60%, #1a0f05 100%)';">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">UNESCO World Heritage Site</p>
+            <h1 class="hero-title">HARAR<span>The Living Walled City</span></h1>
+            <p class="hero-subtitle">Preserving centuries of architecture, culture, faith, and visual history through digital art.</p>
+            <div class="hero-btns">
+                <a href="#gallery" class="btn btn-primary">Explore Gallery</a>
+                <a href="#museum" class="btn btn-outline">Visit Museum</a>
+                <a href="#store" class="btn btn-outline">Shop Prints</a>
+            </div>
+        </div>
+        <div class="scroll-indicator" onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ─── Featured Categories ────────────── -->
+    <section class="section" id="collections">
+        <div class="section-header reveal">
+            <p class="section-eyebrow">Curated Collections</p>
+            <h2 class="section-title">Explore Harar's Visual Heritage</h2>
+            <p class="section-desc">Discover thousands of photographs, artworks, and archival treasures organized by theme.</p>
+        </div>
+        <div class="categories-grid">
+            <div class="category-card reveal reveal-delay-1" onclick="showToast('Architecture collection opened')">
+                <img src="images/architecture.jpg" alt="Harari architecture" loading="lazy" onerror="this.style.background='#2a1f14';this.alt='';">
+                <div class="category-card-overlay">
+                    <span class="category-icon">🏛️</span>
+                    <span class="category-name">Architecture</span>
+                    <span class="category-count">4,200+ artworks</span>
+                </div>
+            </div>
+            <div class="category-card reveal reveal-delay-2" onclick="showToast('Historic Gates collection opened')">
+                <img src="images/gates.jpg" alt="Historic gates" loading="lazy" onerror="this.style.background='#1f1a12';this.alt='';">
+                <div class="category-card-overlay">
+                    <span class="category-icon">🚪</span>
+                    <span class="category-name">Historic Gates</span>
+                    <span class="category-count">850+ artworks</span>
+                </div>
+            </div>
+            <div class="category-card reveal reveal-delay-3" onclick="showToast('Islamic Heritage collection opened')">
+                <img src="images/islamic.jpg" alt="Islamic heritage" loading="lazy" onerror="this.style.background='#1c1814';this.alt='';">
+                <div class="category-card-overlay">
+                    <span class="category-icon">🕌</span>
+                    <span class="category-name">Islamic Heritage</span>
+                    <span class="category-count">1,600+ artworks</span>
+                </div>
+            </div>
+            <div class="category-card reveal reveal-delay-4" onclick="showToast('Coffee Heritage collection opened')">
+                <img src="images/coffee.jpg" alt="Coffee ceremony" loading="lazy" onerror="this.style.background='#231d14';this.alt='';">
+                <div class="category-card-overlay">
+                    <span class="category-icon">☕</span>
+                    <span class="category-name">Coffee Heritage</span>
+                    <span class="category-count">720+ artworks</span>
+                </div>
+            </div>
+            <div class="category-card reveal reveal-delay-1" onclick="showToast('Textiles collection opened')">
+                <img src="images/textiles.jpg" alt="Traditional textiles" loading="lazy" onerror="this.style.background='#1e1610';this.alt='';">
+                <div class="category-card-overlay">
+                    <span class="category-icon">🧵</span>
+                    <span class="category-name">Textiles</span>
+                    <span class="category-count">540+ artworks</span>
+                </div>
+            </div>
+            <div class="category-card reveal reveal-delay-2" onclick="showToast('Night Photography collection opened')">
+                <img src="images/night.jpg" alt="Night photography" loading="lazy" onerror="this.style.background='#0a0a12';this.alt='';">
+                <div class="category-card-overlay">
+                    <span class="category-icon">🌙</span>
+                    <span class="category-name">Night Photography</span>
+                    <span class="category-count">980+ artworks</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Fine Art Gallery ───────────────── -->
+    <section class="section" id="fine-art">
+        <div class="section-header reveal">
+            <p class="section-eyebrow">Fine Art Gallery</p>
+            <h2 class="section-title">Curated Masterpieces</h2>
+            <p class="section-desc">Limited edition prints from world-class photographers documenting Harar's timeless beauty.</p>
+        </div>
+        <div class="masonry-grid">
+            <div class="masonry-item reveal">
+                <img src="images/print-dusk.jpg" alt="Jugol at dusk" loading="lazy" onerror="this.style.minHeight='300px';this.style.background='#1a1510';">
+                <div class="masonry-hover-actions">
+                    <button class="masonry-hover-btn" title="Quick View" onclick="showToast('Quick view opened')">👁️</button>
+                    <button class="masonry-hover-btn" title="Buy Print" onclick="showToast('Added to cart')">🛒</button>
+                    <button class="masonry-hover-btn" title="Wishlist" onclick="showToast('Added to wishlist')">♡</button>
+                </div>
+                <div class="masonry-item-info">
+                    <h3 class="masonry-item-title">Jugol at Dusk</h3>
+                    <div class="masonry-item-meta">
+                        <span>Amanuel T.</span><span>2023</span><span>Archival Print</span>
+                    </div>
+                    <div class="masonry-item-price">$1,200 <small style="font-weight:400;color:var(--text-muted);">Ed. of 25</small></div>
+                </div>
+            </div>
+            <div class="masonry-item reveal reveal-delay-1">
+                <img src="images/portrait-woman.jpg" alt="Harari woman portrait" loading="lazy" onerror="this.style.minHeight='350px';this.style.background='#1c1410';">
+                <div class="masonry-hover-actions">
+                    <button class="masonry-hover-btn" title="Quick View" onclick="showToast('Quick view opened')">👁️</button>
+                    <button class="masonry-hover-btn" title="Buy Print" onclick="showToast('Added to cart')">🛒</button>
+                    <button class="masonry-hover-btn" title="Wishlist" onclick="showToast('Added to wishlist')">♡</button>
+                </div>
+                <div class="masonry-item-info">
+                    <h3 class="masonry-item-title">Portrait of a Harari Woman</h3>
+                    <div class="masonry-item-meta">
+                        <span>Selam D.</span><span>2024</span><span>Giclée</span>
+                    </div>
+                    <div class="masonry-item-price">$950 <small style="font-weight:400;color:var(--text-muted);">Ed. of 15</small></div>
+                </div>
+            </div>
+            <div class="masonry-item reveal reveal-delay-2">
+                <img src="images/mosque-interior.jpg" alt="Ancient mosque interior" loading="lazy" onerror="this.style.minHeight='280px';this.style.background='#161210';">
+                <div class="masonry-hover-actions">
+                    <button class="masonry-hover-btn" title="Quick View" onclick="showToast('Quick view opened')">👁️</button>
+                    <button class="masonry-hover-btn" title="Buy Print" onclick="showToast('Added to cart')">🛒</button>
+                    <button class="masonry-hover-btn" title="Wishlist" onclick="showToast('Added to wishlist')">♡</button>
+                </div>
+                <div class="masonry-item-info">
+                    <h3 class="masonry-item-title">Inside the Great Mosque</h3>
+                    <div class="masonry-item-meta">
+                        <span>Yusuf M.</span><span>2022</span><span>Archival Print</span>
+                    </div>
+                    <div class="masonry-item-price">$1,500 <small style="font-weight:400;color:var(--text-muted);">Ed. of 10</small></div>
+                </div>
+            </div>
+            <div class="masonry-item reveal reveal-delay-3">
+                <img src="images/coffee-ceremony.jpg" alt="Coffee ceremony" loading="lazy" onerror="this.style.minHeight='320px';this.style.background='#1a140c';">
+                <div class="masonry-hover-actions">
+                    <button class="masonry-hover-btn" title="Quick View" onclick="showToast('Quick view opened')">👁️</button>
+                    <button class="masonry-hover-btn" title="Buy Print" onclick="showToast('Added to cart')">🛒</button>
+                    <button class="masonry-hover-btn" title="Wishlist" onclick="showToast('Added to wishlist')">♡</button>
+                </div>
+                <div class="masonry-item-info">
+                    <h3 class="masonry-item-title">The Coffee Ceremony</h3>
+                    <div class="masonry-item-meta">
+                        <span>Liya K.</span><span>2023</span><span>Giclée</span>
+                    </div>
+                    <div class="masonry-item-price">$780 <small style="font-weight:400;color:var(--text-muted);">Ed. of 30</small></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Marketplace ────────────────────── -->
+    <section class="section" id="store">
+        <div class="section-header reveal">
+            <p class="section-eyebrow">Marketplace</p>
+            <h2 class="section-title">Own a Piece of Harar</h2>
+            <p class="section-desc">Premium prints, books, and exclusive digital collectibles for discerning collectors.</p>
+        </div>
+        <div class="marketplace-grid">
+            <div class="product-card reveal" onclick="showToast('Museum Print added to cart')">
+                <img src="images/product-museum.jpg" alt="Museum print" loading="lazy" onerror="this.style.background='#1a1814';">
+                <h3 class="product-name">Museum Prints</h3>
+                <p class="product-price">From $199</p>
+                <div class="product-meta"><span class="product-rating">★★★★★</span><span class="product-stock">In Stock</span></div>
+            </div>
+            <div class="product-card reveal reveal-delay-1" onclick="showToast('Canvas Print added to cart')">
+                <img src="images/product-canvas.jpg" alt="Canvas print" loading="lazy" onerror="this.style.background='#141210';">
+                <h3 class="product-name">Canvas Prints</h3>
+                <p class="product-price">From $249</p>
+                <div class="product-meta"><span class="product-rating">★★★★★</span><span class="product-stock">In Stock</span></div>
+            </div>
+            <div class="product-card reveal reveal-delay-2" onclick="showToast('Coffee Table Book added to cart')">
+                <img src="images/product-book.jpg" alt="Coffee table book" loading="lazy" onerror="this.style.background='#181410';">
+                <h3 class="product-name">Coffee Table Books</h3>
+                <p class="product-price">$89</p>
+                <div class="product-meta"><span class="product-rating">★★★★★</span><span class="product-stock">Limited</span></div>
+            </div>
+            <div class="product-card reveal reveal-delay-3" onclick="showToast('NFT Collection viewed')">
+                <img src="images/product-nft.jpg" alt="NFT art" loading="lazy" onerror="this.style.background='#0d0d18';">
+                <h3 class="product-name">NFT Collection</h3>
+                <p class="product-price">From 0.5 ETH</p>
+                <div class="product-meta"><span class="product-rating">★★★★☆</span><span class="product-stock">Digital</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Interactive Museum ─────────────── -->
+    <section class="section" id="museum">
+        <div class="section-header reveal">
+            <p class="section-eyebrow">Interactive Museum</p>
+            <h2 class="section-title">Experience Harar Digitally</h2>
+            <p class="section-desc">Immerse yourself in virtual tours, interactive maps, and the UNESCO heritage archive.</p>
+        </div>
+        <div class="museum-grid">
+            <div class="museum-card reveal" onclick="showToast('Virtual Tour launching soon')">
+                <div class="museum-card-icon">🎥</div>
+                <h3 class="museum-card-title">Virtual Tour</h3>
+                <p class="museum-card-desc">Walk through Jugol's 368 alleyways from anywhere in the world.</p>
+            </div>
+            <div class="museum-card reveal reveal-delay-1" onclick="showToast('360° Gallery opening')">
+                <div class="museum-card-icon">🔭</div>
+                <h3 class="museum-card-title">360° Gallery</h3>
+                <p class="museum-card-desc">Panoramic views of Harar's most sacred and historic spaces.</p>
+            </div>
+            <div class="museum-card reveal reveal-delay-2" onclick="showToast('Timeline loaded')">
+                <div class="museum-card-icon">📜</div>
+                <h3 class="museum-card-title">Historical Timeline</h3>
+                <p class="museum-card-desc">Trace 1,000+ years of Harari civilization and culture.</p>
+            </div>
+            <div class="museum-card reveal reveal-delay-3" onclick="showToast('City Map opened')">
+                <div class="museum-card-icon">🗺️</div>
+                <h3 class="museum-card-title">Interactive City Map</h3>
+                <p class="museum-card-desc">Explore every gate, mosque, and shrine within the walled city.</p>
+            </div>
+            <div class="museum-card reveal reveal-delay-4" onclick="showToast('UNESCO Archive accessed')">
+                <div class="museum-card-icon">🏛️</div>
+                <h3 class="museum-card-title">UNESCO Heritage</h3>
+                <p class="museum-card-desc">Official documentation and preservation records since 2006.</p>
+            </div>
+            <div class="museum-card reveal" onclick="showToast('Digital Archive opened')">
+                <div class="museum-card-icon">📚</div>
+                <h3 class="museum-card-title">Digital Archive</h3>
+                <p class="museum-card-desc">25,000+ digitized photographs spanning 150 years.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Storytelling ───────────────────── -->
+    <section class="section" id="stories">
+        <div class="section-header reveal">
+            <p class="section-eyebrow">Cultural Narratives</p>
+            <h2 class="section-title">Stories from the Walled City</h2>
+            <p class="section-desc">Immersive visual stories that bring Harar's living heritage to light.</p>
+        </div>
+        <div class="stories-grid">
+            <div class="story-card reveal" onclick="showToast('Story: Harar by Night')">
+                <img src="images/story-night.jpg" alt="Harar by night" loading="lazy" onerror="this.style.background='#0a0a14';">
+                <div class="story-card-content">
+                    <p class="story-card-tag">Photography</p>
+                    <h3 class="story-card-title">Harar by Night</h3>
+                </div>
+            </div>
+            <div class="story-card reveal reveal-delay-1" onclick="showToast('Story: The Call to Prayer')">
+                <img src="images/story-prayer.jpg" alt="Call to prayer" loading="lazy" onerror="this.style.background='#1c1610';">
+                <div class="story-card-content">
+                    <p class="story-card-tag">Faith & Tradition</p>
+                    <h3 class="story-card-title">The Call to Prayer</h3>
+                </div>
+            </div>
+            <div class="story-card reveal reveal-delay-2" onclick="showToast('Story: Life Inside Jugol')">
+                <img src="images/story-jugol.jpg" alt="Life inside Jugol" loading="lazy" onerror="this.style.background='#181410';">
+                <div class="story-card-content">
+                    <p class="story-card-tag">Daily Life</p>
+                    <h3 class="story-card-title">Life Inside Jugol</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Statistics ─────────────────────── -->
+    <section class="section">
+        <div class="section-header reveal">
+            <p class="section-eyebrow">By the Numbers</p>
+            <h2 class="section-title">Our Growing Archive</h2>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-item reveal">
+                <div class="stat-number" data-count="25000">0</div>
+                <div class="stat-label">Digital Photographs</div>
+            </div>
+            <div class="stat-item reveal reveal-delay-1">
+                <div class="stat-number" data-count="600">0</div>
+                <div class="stat-label">Artworks</div>
+            </div>
+            <div class="stat-item reveal reveal-delay-2">
+                <div class="stat-number" data-count="180">0</div>
+                <div class="stat-label">Historical Buildings</div>
+            </div>
+            <div class="stat-item reveal reveal-delay-3">
+                <div class="stat-number" data-count="150">0</div>
+                <div class="stat-label">Years of Photography</div>
+            </div>
+            <div class="stat-item reveal reveal-delay-4">
+                <div class="stat-number" data-count="50">0</div>
+                <div class="stat-label">Photographers</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Membership ─────────────────────── -->
+    <section class="section" id="membership">
+        <div class="section-header reveal">
+            <p class="section-eyebrow">Membership</p>
+            <h2 class="section-title">Join the Preservation Effort</h2>
+            <p class="section-desc">Become a patron and gain exclusive access to Harar's digital heritage.</p>
+        </div>
+        <div class="membership-grid">
+            <div class="membership-card reveal">
+                <h3 class="membership-tier">Explorer</h3>
+                <p class="membership-price">$12<span style="font-size:1rem;">/mo</span></p>
+                <ul class="membership-benefits">
+                    <li>Unlimited downloads</li>
+                    <li>Monthly newsletter</li>
+                    <li>Community access</li>
+                    <li>Digital postcards</li>
+                </ul>
+                <button class="btn btn-outline" style="width:100%;justify-content:center;" onclick="showToast('Explorer membership selected')">Join Explorer</button>
+            </div>
+            <div class="membership-card featured reveal reveal-delay-1">
+                <span class="membership-badge">Most Popular</span>
+                <h3 class="membership-tier">Collector</h3>
+                <p class="membership-price">$29<span style="font-size:1rem;">/mo</span></p>
+                <ul class="membership-benefits">
+                    <li>Private exhibitions</li>
+                    <li>Exclusive artwork</li>
+                    <li>Priority purchases</li>
+                    <li>Museum events</li>
+                    <li>20% store discount</li>
+                </ul>
+                <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="showToast('Collector membership selected')">Join Collector</button>
+            </div>
+            <div class="membership-card reveal reveal-delay-2">
+                <h3 class="membership-tier">Patron</h3>
+                <p class="membership-price">$99<span style="font-size:1rem;">/mo</span></p>
+                <ul class="membership-benefits">
+                    <li>All Collector benefits</li>
+                    <li>Signed limited editions</li>
+                    <li>Annual gallery visit</li>
+                    <li>Name in archive credits</li>
+                    <li>Direct curator access</li>
+                </ul>
+                <button class="btn btn-outline" style="width:100%;justify-content:center;" onclick="showToast('Patron membership selected')">Become a Patron</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Testimonials ──────────────────── -->
+    <section class="section">
+        <div class="section-header reveal">
+            <p class="section-eyebrow">Testimonials</p>
+            <h2 class="section-title">Voices from the Community</h2>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card reveal">
+                <p class="testimonial-quote">"An extraordinary archive that captures the soul of one of Africa's most remarkable cities. Essential for any serious collector of ethnographic photography."</p>
+                <p class="testimonial-author">Dr. Fatima Hassan</p>
+                <p class="testimonial-role">Cultural Researcher, Addis Ababa University</p>
+            </div>
+            <div class="testimonial-card reveal reveal-delay-1">
+                <p class="testimonial-quote">"The print quality is museum-grade. I've framed three pieces from the Harar collection, and they are the centerpiece of my home gallery."</p>
+                <p class="testimonial-author">Marcus Lindström</p>
+                <p class="testimonial-role">Art Collector, Stockholm</p>
+            </div>
+            <div class="testimonial-card reveal reveal-delay-2">
+                <p class="testimonial-quote">"As a Harari diaspora member, this library lets me reconnect with my heritage in ways I never thought possible. The virtual tours are breathtaking."</p>
+                <p class="testimonial-author">Amira Yussuf</p>
+                <p class="testimonial-role">Traveler & Writer, London</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Newsletter ─────────────────────── -->
+    <section class="section">
+        <div class="newsletter-section reveal">
+            <p class="section-eyebrow">Stay Connected</p>
+            <h2 class="section-title" style="font-family:var(--font-display);">Become Part of Harar's Living Heritage</h2>
+            <p class="section-desc">Receive exclusive stories, new artwork alerts, and invitations to private exhibitions.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault();showToast('Welcome to the Harar community!');this.reset();">
+                <input type="email" class="newsletter-input" placeholder="Your email address" required aria-label="Email for newsletter">
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ─── Footer ─────────────────────────── -->
+    <footer class="footer" id="about">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <h4>Harar Digital Art Library</h4>
+                <p style="color:var(--text-muted);font-size:0.85rem;line-height:1.6;">A premium digital museum and heritage archive dedicated to preserving the visual history of Harar, Ethiopia — a UNESCO World Heritage Site.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#store">Shop Prints</a></li>
+                    <li><a href="#museum">Virtual Museum</a></li>
+                    <li><a href="#membership">Membership</a></li>
+                    <li><a href="#stories">Stories</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Licensing</a></li>
+                    <li><a href="#">Copyright</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter / X</a></li>
+                    <li><a href="#">Pinterest</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Harar Digital Art Library. All rights reserved.</span>
+            <span class="footer-unesco">🏛️ Proudly documenting a UNESCO World Heritage Site since 2006</span>
+        </div>
+    </footer>
+
+    <!-- ─── Toast Notification ────────────── -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        (function() {
+            const html = document.documentElement;
+            const themeToggle = document.getElementById('themeToggle');
+            let currentTheme = 'dark';
+
+            window.toggleTheme = function() {
+                currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', currentTheme);
+                themeToggle.textContent = currentTheme === 'dark' ? '🌙' : '☀️';
+                localStorage.setItem('harar-theme', currentTheme);
+            };
+
+            const savedTheme = localStorage.getItem('harar-theme');
+            if (savedTheme) {
+                currentTheme = savedTheme;
+                html.setAttribute('data-theme', currentTheme);
+                themeToggle.textContent = currentTheme === 'dark' ? '🌙' : '☀️';
+            }
+
+            const navLinks = document.getElementById('navLinks');
+            window.toggleMobileMenu = function() {
+                navLinks.classList.toggle('open');
+            };
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('open');
+                    navLinks.querySelectorAll('a').forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                });
+            });
+
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) navbar.classList.add('scrolled');
+                else navbar.classList.remove('scrolled');
+            });
+
+            const revealElements = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+            revealElements.forEach(el => observer.observe(el));
+
+            const statNumbers = document.querySelectorAll('.stat-number[data-count]');
+            const countObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const target = parseInt(el.getAttribute('data-count'), 10);
+                        const duration = 2000;
+                        const startTime = performance.now();
+                        function updateCount(timestamp) {
+                            const elapsed = timestamp - startTime;
+                            const progress = Math.min(elapsed / duration, 1);
+                            const eased = 1 - Math.pow(1 - progress, 3);
+                            const current = Math.floor(eased * target);
+                            el.textContent = current.toLocaleString() + '+';
+                            if (progress < 1) requestAnimationFrame(updateCount);
+                            else el.textContent = target.toLocaleString() + '+';
+                        }
+                        requestAnimationFrame(updateCount);
+                        countObserver.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.5 });
+            statNumbers.forEach(el => countObserver.observe(el));
+
+            const toast = document.getElementById('toast');
+            let toastTimer;
+            window.showToast = function(message) {
+                clearTimeout(toastTimer);
+                toast.textContent = message;
+                toast.classList.add('show');
+                toastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
+            };
+
+            const sections = document.querySelectorAll('section[id]');
+            const navAnchors = document.querySelectorAll('.nav-links a');
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    if (window.scrollY >= section.offsetTop - 120) current = section.getAttribute('id');
+                });
+                navAnchors.forEach(a => {
+                    a.classList.remove('active');
+                    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+                });
+            });
+
+            const heroBgImg = document.querySelector('.hero-bg img');
+            if (heroBgImg) {
+                window.addEventListener('scroll', () => {
+                    const scrollY = window.scrollY;
+                    if (scrollY < window.innerHeight) {
+                        heroBgImg.style.transform = `scale(${1 + scrollY * 0.0003}) translateY(${scrollY * 0.06}px)`;
+                    }
+                });
+            }
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
