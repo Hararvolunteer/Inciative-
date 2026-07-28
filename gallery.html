@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gallery</title>
+  <style>
+    body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;padding:1rem;background:#f7f7f7}
+    h1{text-align:center}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;max-width:1100px;margin:1rem auto}
+    .card{background:white;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.08);display:flex;flex-direction:column}
+    .card img{width:100%;height:200px;object-fit:cover}
+    .caption{padding:8px 12px;font-size:14px;color:#333}
+  </style>
+</head>
+<body>
+  <h1>Project Images</h1>
+  <p style="text-align:center">Images are expected to be in the Images/ folder. If any image is missing upload it with the same filename.</p>
+  <div class="grid">
+    <div class="card"><img src="Images/harar_logo.png" alt="Image 1"><div class="caption">Image 1 — harar_logo.png</div></div>
+    <div class="card"><img src="Images/harar_gate.jpg" alt="Image 2"><div class="caption">Image 2 — harar_gate.jpg</div></div>
+    <div class="card"><img src="Images/person1.jpg" alt="Image 3"><div class="caption">Image 3 — person1.jpg</div></div>
+    <div class="card"><img src="Images/planting.jpg" alt="Image 4"><div class="caption">Image 4 — planting.jpg</div></div>
+    <div class="card"><img src="Images/group_lake.jpg" alt="Image 5"><div class="caption">Image 5 — group_lake.jpg</div></div>
+    <div class="card"><img src="Images/field_water.jpg" alt="Image 6"><div class="caption">Image 6 — field_water.jpg</div></div>
+    <div class="card"><img src="Images/planting2.jpg" alt="Image 7"><div class="caption">Image 7 — planting2.jpg</div></div>
+    <div class="card"><img src="Images/field_person.jpg" alt="Image 8"><div class="caption">Image 8 — field_person.jpg</div></div>
+    <div class="card"><img src="Images/planting_child1.jpg" alt="Image 9"><div class="caption">Image 9 — planting_child1.jpg</div></div>
+    <div class="card"><img src="Images/harar_gate_day.jpg" alt="Image 10"><div class="caption">Image 10 — harar_gate_day.jpg</div></div>
+    <div class="card"><img src="Images/watering_flowers.jpg" alt="Image 11"><div class="caption">Image 11 — watering_flowers.jpg</div></div>
+    <div class="card"><img src="Images/planting_child2.jpg" alt="Image 12"><div class="caption">Image 12 — planting_child2.jpg</div></div>
+    <div class="card"><img src="Images/watering2.jpg" alt="Image 13"><div class="caption">Image 13 — watering2.jpg</div></div>
+    <div class="card"><img src="Images/person2.jpg" alt="Image 14"><div class="caption">Image 14 — person2.jpg</div></div>
+  </div>
+</body>
+</html>
